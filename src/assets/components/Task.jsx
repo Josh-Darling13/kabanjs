@@ -1,7 +1,7 @@
 import React from "react";
 import { Draggable } from "react-beautiful-dnd";
 import styled from "styled-components";
-// import { Avatar, Image } from "antd";
+import { Avatar, Image } from "antd";
 
 const Container = styled.div`
   border-radius: 10px;
@@ -26,17 +26,16 @@ const Icons = styled.div`
   justify-content: end;
   padding: 2px;
 `;
-
 function bgcolorChange(props) {
   return props.isDragging
-    ? "purple"
+    ? "lightgreen"
     : props.isDraggable
     ? props.isBacklog
-      ? "#800080"
-      : "#800080"
+      ? "#F2D7D5"
+      : "#DCDCDC"
     : props.isBacklog
-    ? "#800080"
-    : "#800080";
+    ? "#F2D7D5"
+    : "#EAF4FC";
 }
 
 export default function Task({ task, index }) {
@@ -62,13 +61,14 @@ export default function Task({ task, index }) {
           >
             <TextContent>{task.title}</TextContent>
           </div>
-          {/* <Icons>
+          <Icons>
             <div>
               <Avatar
-                  src={"https://joesch.moe/api/v1/random?key=" + task.id}
+                onClick={() => console.log(task)}
+                src={"https://joesch.moe/api/v1/random?key=" + task.id}
               />
             </div>
-          </Icons> */}
+          </Icons>
           {provided.placeholder}
         </Container>
       )}
